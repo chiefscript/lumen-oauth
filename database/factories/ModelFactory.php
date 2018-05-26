@@ -19,6 +19,8 @@ $factory->define(App\Post::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Comment::class, function (Faker\Generator $faker) {
     return [
-        'content' => $faker->paragraph(1)
+        'user_id' => rand(1, 7),
+        'post_id' => rand(1, 7),
+        'content' => $faker->paragraph
     ];
 });

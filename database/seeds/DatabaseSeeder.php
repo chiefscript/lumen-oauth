@@ -26,13 +26,7 @@ class DatabaseSeeder extends Seeder
             $user->posts()->save($posts);
         });
 
-        factory(App\Comment::class, function (Faker\Generator $faker) {
-            return [
-                'user_id' => rand(1, 7),
-                'post_id' => rand(1, 7),
-                'content' => $faker->paragraph
-            ];
-        });
+        $this->call(CommentsTableSeeder::class);
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
