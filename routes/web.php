@@ -16,3 +16,9 @@ $router->get('/', function () use ($router) {
 });
 
 $router->post('auth/login', ['uses' => 'AuthController@authenticate']);
+
+
+$router->group(['prefix' => 'api/v1', 'middleware' => 'jwt.auth'], function() use ($router) {
+    //Get posts with comments
+    $router->get('/posts', 'PostsController@showPosts');
+});
